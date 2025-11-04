@@ -22,11 +22,15 @@ All activity must comply with applicable laws and ethical guidelines.
 
 ## Repository layout - to be updated
 
-docs/          → Diagrams, attack flow, mitigation notes
-exploits/      → PoC modules for the two CVEs
-payload/       → Dropper, encryptor, webshell source
-scripts/       → Automation helpers
-tests/         → Future test harness
+```docs/```          → Diagrams, attack flow, mitigation notes
+
+```exploits/```      → PoC modules for the two CVEs
+
+```payload/```      → Dropper, encryptor, webshell source
+
+```scripts/```      → Automation helpers
+
+```tests/```       → Future test harness
 
 ---
 
