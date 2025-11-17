@@ -49,11 +49,16 @@ services:
 
   attacker:
     image: nginx:alpine
-    container_name: attacker-server
+    container_name: attacker-c2
+    hostname: cdn-updates.cloud
     ports:
       - "8000:80"
     volumes:
       - ./attacker/www:/usr/share/nginx/html:ro
+      - ./attacker/logs:/var/log/nginx
+    networks:
+      - lab-net
+    restart: unless-stopped
 
 volumes:
   xwiki-data:
