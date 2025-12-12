@@ -1,0 +1,54 @@
+= Estándar de Integración Continua (LegalTech) =
+
+{{info}}
+**Importante:** Todos los microservicios nuevos deben utilizar esta plantilla base para asegurar la compatibilidad con el sistema de auditoría legal.
+{{/info}}
+
+== Configuración del Pipeline (.gitlab-ci.yml) ==
+
+Copia el siguiente bloque en la raíz de tu repositorio:
+
+{{code language="yaml"}}
+stages:
+  - build
+  - test
+  - security_scan
+  - deploy
+
+variables:
+  MAVEN_OPTS: "-Dhttps.protocols=TLSv1.2 -Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository"
+
+build_service:
+  stage: build
+  image: maven:3.8-openjdk-17
+  script:
+    - echo "Iniciando compilación del servicio..."
+    - mvn clean package -B
+  artifacts:
+    paths:
+      - target/*.jar
+
+unit_tests:
+  stage: test
+  script:
+    - echo "Ejecutando tests unitarios (JUnit)..."
+    - mvn test
+
+security_check:
+  stage: security_scan
+  script:
+    - echo "Escaneando vulnerabilidades estáticas..."
+    - /usr/bin/security-checker --audit-level=HIGH
+
+deploy_staging:
+  stage: deploy
+  script:
+    - echo "Desplegando en entorno de Staging..."
+    - ./scripts/deploy_k8s.sh
+  only:
+    - develop
+{{/code}}
+
+== Contacto ==
+Si tienes problemas con el pipeline, contacta con el equipo de DevOps en el canal #devops-support.
+
