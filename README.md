@@ -14,23 +14,17 @@ All activity must comply with applicable laws and ethical guidelines.
 
 1. **Phishing** – Excel attachment exploiting (CVE-2025-47957)
 2. **Pivot** – PowerShell dropper → XWiki RCE (CVE-2025-24893)
-3. **Worm** – Wiki pages + webhooks push polymorphic payloads into GitLab CI
-4. **Encryption** – Go binary (`shadowvault.exe`) locks `\\fileserver\legal\` with ChaCha20-Poly1305
+3. **Worm** – XWiki pages + webhooks push polymorphic payloads into GitLab CI
+4. **Encryption** – Go binary
 5. **Ransom** – Monero demand + automated key delivery via Telegram bot
 
 ---
 
-## Repository layout - to be updated
+## Repository layout
 
-```docs/```          → Diagrams, attack flow, mitigation notes
+```docs/```          → Attack flow and mitigation notes
 
-```exploits/```      → PoC modules for the two CVEs
-
-```payload/```      → Dropper, encryptor, webshell source
-
-```scripts/```      → Automation helpers
-
-```tests/```       → Future test harness
+```attacker/exploit/```      → PoC modules for the two CVEs
 
 ---
 
