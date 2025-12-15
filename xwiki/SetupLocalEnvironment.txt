@@ -1,0 +1,32 @@
+= Development Environment Configuration =
+
+To work on the contract management modules (LegalDocs), you need to configure the following environment variables.
+
+== Prerequisites ==
+
+- JDK 17 or higher
+- Docker Desktop
+- Access to the corporate VPN
+
+== Initialization Script ==
+
+To connect to the anonymized development database, run this script in your terminal (PowerShell or Bash):
+
+{{code language="bash"}}
+
+# Environment variable configuration for LegalApp
+
+export APP_ENV="development"
+export DB_HOST="192.168.10.50"
+export DB_USER="dev_user"
+
+# Request the password from the team lead
+
+export API_KEY_INTERNAL="lt_dev_99887766"
+
+echo "Environment configured correctly. You can now run 'mvn spring-boot:run'"
+{{/code}}
+
+{{warning}}
+**Never commit real credentials to the repository.** Always use environment variables or the corporate Vault.
+{{/warning}}

