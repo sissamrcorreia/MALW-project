@@ -1,54 +1,54 @@
-= Estándar de Integración Continua (LegalTech) =
+= Continuous Integration Standard (LegalTech) =
 
 {{info}}
-**Importante:** Todos los microservicios nuevos deben utilizar esta plantilla base para asegurar la compatibilidad con el sistema de auditoría legal.
+**Important:** All new microservices must use this base template to ensure compatibility with the legal auditing system.
 {{/info}}
 
-== Configuración del Pipeline (.gitlab-ci.yml) ==
+== Pipeline Configuration (.gitlab-ci.yml) ==
 
-Copia el siguiente bloque en la raíz de tu repositorio:
+Copy the following block into the root of your repository:
 
 {{code language="yaml"}}
 stages:
-  - build
-  - test
-  - security_scan
-  - deploy
+
+* build
+* test
+* security_scan
+* deploy
 
 variables:
-  MAVEN_OPTS: "-Dhttps.protocols=TLSv1.2 -Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository"
+MAVEN_OPTS: "-Dhttps.protocols=TLSv1.2 -Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository"
 
 build_service:
-  stage: build
-  image: maven:3.8-openjdk-17
-  script:
-    - echo "Iniciando compilación del servicio..."
-    - mvn clean package -B
-  artifacts:
-    paths:
-      - target/*.jar
+stage: build
+image: maven:3.8-openjdk-17
+script:
+  - echo "Starting service compilation..."
+  - mvn clean package -B
+artifacts:
+paths:
+  - target/*.jar
 
 unit_tests:
-  stage: test
-  script:
-    - echo "Ejecutando tests unitarios (JUnit)..."
-    - mvn test
+stage: test
+script:
+  - echo "Running unit tests (JUnit)..."
+  - mvn test
 
 security_check:
-  stage: security_scan
-  script:
-    - echo "Escaneando vulnerabilidades estáticas..."
-    - /usr/bin/security-checker --audit-level=HIGH
+stage: security_scan
+script:
+  - echo "Scanning static vulnerabilities..."
+  - /usr/bin/security-checker --audit-level=HIGH
 
 deploy_staging:
-  stage: deploy
-  script:
-    - echo "Desplegando en entorno de Staging..."
-    - ./scripts/deploy_k8s.sh
-  only:
-    - develop
+stage: deploy
+script:
+  - echo "Deploying to Staging environment..."
+  - ./scripts/deploy_k8s.sh
+only:
+  - develop
 {{/code}}
 
-== Contacto ==
-Si tienes problemas con el pipeline, contacta con el equipo de DevOps en el canal #devops-support.
-
+== Contact ==
+If you have issues with the pipeline, contact the DevOps team in the #devops-support channel.
