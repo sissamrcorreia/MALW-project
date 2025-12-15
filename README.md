@@ -32,7 +32,7 @@ All activity must comply with applicable laws and ethical guidelines.
 
 ```xwiki/```          → Files related to XWiki
 
---
+---
 
 ## Authors
 
