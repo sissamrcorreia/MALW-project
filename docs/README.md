@@ -1,7 +1,3 @@
-Aquí tienes toda la información organizada en un **README.md** profesional y estructurado por fases, listo para usar como guía durante la demo o para incluir en la documentación del proyecto.
-
------
-
 # 🛡️ Malware Project - Attack Demo Guide
 
 Este documento detalla los pasos exactos para reproducir la cadena de ataque completa: **Phishing (Word) → Meterpreter RCE → Persistencia XWiki → Worm Propagation → Ransomware**.
