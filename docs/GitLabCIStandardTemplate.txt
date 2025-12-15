@@ -11,10 +11,10 @@ Copy the following block into the root of your repository:
 {{code language="yaml"}}
 stages:
 
-* build
-* test
-* security_scan
-* deploy
+- build
+- test
+- security_scan
+- deploy
 
 variables:
 MAVEN_OPTS: "-Dhttps.protocols=TLSv1.2 -Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository"

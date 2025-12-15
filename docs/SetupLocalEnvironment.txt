@@ -4,9 +4,9 @@ To work on the contract management modules (LegalDocs), you need to configure th
 
 == Prerequisites ==
 
-* JDK 17 or higher
-* Docker Desktop
-* Access to the corporate VPN
+- JDK 17 or higher
+- Docker Desktop
+- Access to the corporate VPN
 
 == Initialization Script ==
 
