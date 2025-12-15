@@ -22,11 +22,17 @@ All activity must comply with applicable laws and ethical guidelines.
 
 ## Repository layout
 
-```docs/```          → Attack flow and mitigation notes
-
 ```attacker/exploit/```      → PoC modules for the two CVEs
 
----
+```attacker/ransomware/```          → Files for the ransomware
+
+```attacker/worm/```          → Worm and propagation scripts
+
+```docs/```          → Attack flow and mitigation notes
+
+```xwiki/```          → Files related to XWiki
+
+--
 
 ## Authors
 
